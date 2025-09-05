@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<!-- The lang and dir attributes will be updated by JavaScript -->
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The title will be updated by JavaScript -->
+    <title data-key="page_title">Ahmed Moharam - احمد محرم | رحّالة حول العالم</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+
+        :root {
+            --primary-color: #ff8c3b;
+            --secondary-color: #ff7e31;
+            --accent-color: #8b5cf6;
+            --background-dark: #0d1117;
+            --background-light: #161b22;
+            --text-primary: #ffffff;
+            --text-secondary: #c9d1d9;
+            --border-color: #30363d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+        
+        /* Font classes for different languages */
+        body.lang-ar {
+            font-family: 'Tajawal', sans-serif;
+        }
+        body.lang-en, body.lang-de {
+            font-family: 'Poppins', sans-serif;
+        }
+        .cairo-font {
+             font-family: 'Cairo', sans-serif;
+        }
+        body.lang-en .cairo-font, body.lang-de .cairo-font {
+             font-family: 'Poppins', sans-serif;
+             font-weight: 900;
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            padding: 25px 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center; /* Vertically align items */
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+        
+        /* --- Language Switcher --- */
+        .language-switcher {
+            position: relative;
+            cursor: pointer;
+            /* === START: FIX === */
+            /* Add padding to the bottom to extend the hover area downwards */
+            padding-bottom: 20px;
+            /* Use negative margin to prevent the padding from affecting layout */
+            margin-bottom: -20px;
+            /* === END: FIX === */
+        }
+
+        .language-selected {
+            color: var(--text-secondary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .language-selected:hover {
+            color: var(--primary-color);
+        }
+
+        .language-selected .fa-globe {
+            font-size: 1.1rem;
+        }
+        
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            /* === START: FIX === */
+            /* Position it perfectly below the parent element */
+            top: 100%;
+            /* === END: FIX === */
+            right: 0;
+            background-color: var(--background-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            list-style: none;
+            padding: 10px 0;
+            min-width: 120px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            z-index: 1001;
+        }
+        html[dir="ltr"] .language-dropdown {
+            right: auto;
+            left: 0;
+        }
+
+
+        .language-switcher:hover .language-dropdown {
+            display: block;
+        }
+
+        .language-dropdown li a {
+            display: block;
+            padding: 8px 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .language-dropdown li a:hover {
+            background-color: var(--primary-color);
+            color: var(--background-dark);
+        }
+
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 85vh;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            text-align: right;
+            background: url('https://i.ibb.co/wFf6WsbW/Ahmed-Moharam3.jpg') no-repeat center center/cover;
+            padding-top: 100px;
+            padding-bottom: 2vh;
+        }
+        
+        html[dir="ltr"] .hero {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        html[dir="rtl"] .hero::before {
+            background: linear-gradient(to left, rgba(13, 17, 23, 0.9) 30%, rgba(13, 17, 23, 0.3) 100%);
+        }
+        html[dir="ltr"] .hero::before {
+            background: linear-gradient(to right, rgba(13, 17, 23, 0.9) 30%, rgba(13, 17, 23, 0.3) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Cairo', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--background-dark);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 140, 59, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(255, 140, 59, 0.4);
+        }
+
+        /* --- Section Styling --- */
+        .section {
+            padding: 80px 0;
+            background-color: var(--background-dark);
+        }
+        
+        .section-title{
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* --- About & Journey Section --- */
+        .about-journey-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-me .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid var(--border-color);
+            object-fit: cover;
+        }
+
+        .about-me blockquote {
+            font-size: 1.5rem;
+            font-family: 'Cairo', sans-serif;
+            padding-right: 20px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        html[dir="rtl"] .about-me blockquote {
+            border-right: 4px solid var(--primary-color);
+        }
+        
+        html[dir="ltr"] .about-me blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 20px;
+            padding-right: 0;
+        }
+
+        .about-me p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .journey-stats-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .stats-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--background-light);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-card .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+        }
+        
+        .stat-card .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .timeline {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--background-dark);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        html[dir="rtl"] .timeline-icon { margin-left: 20px; }
+        html[dir="ltr"] .timeline-icon { margin-right: 20px; }
+
+
+        .timeline-content .title {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content .description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* --- Digital Presence --- */
+        #digital-presence {
+            background-color: var(--background-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #digital-presence::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1200px;
+            height: 600px;
+            transform: translate(-50%, -50%);
+            background-image: url('https://i.ibb.co/pBg6DLcd/World-map.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .presence-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .presence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .presence-card {
+            background: rgba(13, 17, 23, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .presence-card:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+        .presence-card .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .presence-card .card-content .platform {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .presence-card .card-content .count {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .total-followers-card {
+            background-color: var(--primary-color);
+            color: var(--background-dark);
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 16px;
+            margin: 60px auto 0;
+            max-width: 300px;
+        }
+        .total-followers-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .total-followers-card .total-count {
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+        
+        .community-join {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        /* --- NEW Social Grid Section --- */
+        #social .container {
+            text-align: center;
+        }
+
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .social-card-new {
+            background-color: var(--background-light);
+            border-radius: 12px;
+            padding: 30px 40px;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 200px;
+            border: 2px solid var(--border-color);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-icon-new {
+            font-size: 3rem;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .social-card-new span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* Hover Effects */
+        .social-card-new:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-card-new.youtube:hover { border-color: #FF0000; }
+        .social-card-new.youtube:hover .social-icon-new { color: #FF0000; }
+
+        .social-card-new.instagram:hover { border-color: #E1306C; }
+        .social-card-new.instagram:hover .social-icon-new { color: #E1306C; }
+
+        .social-card-new.facebook:hover { border-color: #1877f2; }
+        .social-card-new.facebook:hover .social-icon-new { color: #1877f2; }
+
+        .social-card-new.tiktok:hover { border-color: #FE2C55; }
+        .social-card-new.tiktok:hover .social-icon-new { color: #FE2C55; }
+
+
+        /* --- Footer --- */
+        footer {
+            padding: 25px 0;
+            background-color: var(--background-light);
+            border-top: 1px solid var(--border-color);
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .footer-container p{
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .about-journey-grid { grid-template-columns: 1fr; }
+            .hero { text-align: center; justify-content: center; align-items: center; padding-bottom: 0;}
+            .hero-content { padding: 0 20px; }
+            .hero h1 { font-size: 3.5rem; }
+        }
+        
+        @media (max-width: 768px) {
+            .stats-cards { grid-template-columns: 1fr; }
+            .footer-container { flex-direction: column; text-align: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .social-card-new {
+                width: 150px;
+                padding: 25px 20px;
+            }
+            .social-icon-new {
+                font-size: 2.5rem;
+            }
+        }
+
+    </style>
+</head>
+<!-- Add language class to body for font styling -->
+<body class="lang-ar">
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo cairo-font">احمد محرم</a>
+            <ul class="nav-links">
+                <li><a href="#about-journey" data-key="nav_about">عني</a></li>
+                <li><a href="#about-journey" data-key="nav_journey">رحلتي</a></li>
+                <li><a href="#digital-presence" data-key="nav_digital_presence">التواجد الرقمي</a></li>
+                <li><a href="#social" data-key="nav_contact">التواصل</a></li>
+                <!-- Language Switcher -->
+                <li class="language-switcher">
+                    <div class="language-selected">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-lang">العربية</span>
+                    </div>
+                    <ul class="language-dropdown">
+                        <li><a href="#" lang="ar">العربية</a></li>
+                        <li><a href="#" lang="en">English</a></li>
+                        <li><a href="#" lang="de">Deutsch</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+    
+    <header class="hero">
+        <div class="container hero-content">
+            <h1 class="cairo-font">Ahmed Moharam</h1>
+            <p class="subtitle" data-key="hero_subtitle">أحمد محرم | يوتيوبر رحالة، صانع محتوى، فلوكر</p>
+            <p class="description" data-key="hero_description">
+                نسافر لنستعيد الأمل الذي فقدناه، الأمل بالإنسان. نسافر لنكون أقرب من الشعوب، أقرب من الحقيقة، وأقرب لنا نحن. يأخذنا أحمد محرم في رحلة مميزة من خلال فلوجاته، حيث يستخدم الكوميديا ليوصل لنا الحقائق الإنسانية الجميلة والمواقف اليومية في أوروبا، ويرسم البسمة على وجوهنا ويقربنا من بعض. ❤️
+            </p>
+            <a href="https://www.youtube.com/@AhmedMoharam" target="_blank" class="cta-button" data-key="hero_cta">اكتشف رحلاتي</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="section" id="about-journey">
+            <div class="container about-journey-grid">
+                <div class="about-me">
+                    <img src="https://i.ibb.co/VY9SNJPF/Ahmed-Moharam2.jpg" alt="احمد محرم" class="profile-pic">
+                    <blockquote class="cairo-font" data-key="about_quote">
+                        أنا أحمد محرم من مصر وأعيش في ألمانيا، أقدم فلوجات بطريقة كوميدية وأشارك حياتي اليومية.
+                    </blockquote>
+                     <p data-key="about_p">أسلوبي المميز في تقديم المحتوى الكوميدي جذب آلاف المهتمين بالحياة والدراسة في ألمانيا. قناتي ليست مجرد محتوى، بل هي دعوة للضحك والتعلم، تفتح في كل فيديو أفقاً جديداً من البهجة والمعرفة. وهدفي أن أسافر كل أوروبا 🇪🇺 وأنقل لكم أجمل اللحظات والمغامرات من كل البلدان!</p>
+                </div>
+                <div class="journey-stats-section">
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="430000000">0</div>
+                            <div class="stat-label" data-key="stat1_label">مشاهدة واكثر على اليوتيوب</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="825000">0</div>
+                            <div class="stat-label" data-key="stat2_label">مشترك واكثر على اليوتيوب</div>
+                        </div>
+                         <div class="stat-card">
+                            <div class="stat-number" data-target="1406">0</div>
+                            <div class="stat-label" data-key="stat3_label">فيديو واكثر على اليوتيوب</div>
+                        </div>
+                         <div class="stat-card">
+                            <div class="stat-number" data-target="20">0</div>
+                            <div class="stat-label" data-key="stat4_label">دولة واكثر زارها</div>
+                        </div>
+                    </div>
+                    <ul class="timeline">
+                        <li class="timeline-item">
+                            <div class="timeline-icon"><i class="fas fa-users"></i></div>
+                            <div class="timeline-content">
+                                <div class="title" data-key="timeline1_title">بصمة رقمية مؤثرة</div>
+                                <div class="description" data-key="timeline1_desc">تأثير واسع في أنحاء الوطن العربي بملايين المتابعين.</div>
+                            </div>
+                        </li>
+                         <li class="timeline-item">
+                            <div class="timeline-icon"><i class="fas fa-globe-africa"></i></div>
+                            <div class="timeline-content">
+                                <div class="title" data-key="timeline2_title">الهدف العالمي</div>
+                                <div class="description" data-key="timeline2_desc">يسعى لتصوير فيديو من كل دولة في العالم، وقد أنجز الكثير من المهمة.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="digital-presence">
+            <div class="container presence-container">
+                <h2 class="section-title cairo-font" data-key="presence_title">التواجد الرقمي</h2>
+                <div class="presence-grid">
+                    <div class="presence-card">
+                        <img class="avatar" src="https://i.ibb.co/4ZwCz439/channels4-profile.jpg" alt="YouTube">
+                        <div class="card-content">
+                            <div class="platform" data-key="platform_youtube">يوتيوب</div>
+                            <div class="count" data-target="824000">0</div>
+                        </div>
+                    </div>
+                     <div class="presence-card">
+                        <img class="avatar" src="https://i.ibb.co/v6bhq80C/Ahmed-Moharam5.jpg" alt="TikTok">
+                        <div class="card-content">
+                            <div class="platform" data-key="platform_tiktok">تيك توك</div>
+                            <div class="count" data-target="816000">0</div>
+                        </div>
+                    </div>
+                     <div class="presence-card">
+                        <img class="avatar" src="https://i.ibb.co/v6bhq80C/Ahmed-Moharam5.jpg" alt="Instagram">
+                        <div class="card-content">
+                            <div class="platform" data-key="platform_instagram">انستغرام</div>
+                            <div class="count" data-target="284000">0</div>
+                        </div>
+                    </div>
+                     <div class="presence-card">
+                        <img class="avatar" src="https://i.ibb.co/v6bhq80C/Ahmed-Moharam5.jpg" alt="Facebook">
+                        <div class="card-content">
+                            <div class="platform" data-key="platform_facebook">فيسبوك</div>
+                            <div class="count" data-target="101000">0</div>
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="total-followers-card">
+                    <h3 data-key="total_followers_title">الإجمالي على المنصات</h3>
+                    <div class="total-count" data-target="2025000">0</div>
+                </div>
+
+                <div class="community-join">
+                     <a href="https://www.youtube.com/@AhmedMoharam" target="_blank" class="cta-button" data-key="join_community_cta">انضم للمجتمع</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="social">
+             <div class="container">
+                <h2 class="section-title cairo-font" data-key="social_title">تابع المغامرة</h2>
+                <div class="social-grid">
+                    <a href="https://www.youtube.com/@AhmedMoharam" target="_blank" class="social-card-new youtube">
+                        <i class="fab fa-youtube social-icon-new"></i>
+                        <span class="cairo-font" data-key="platform_youtube">يوتيوب</span>
+                    </a>
+                    <a href="https://www.instagram.com/muharamofficial" target="_blank" class="social-card-new instagram">
+                        <i class="fab fa-instagram social-icon-new"></i>
+                        <span class="cairo-font" data-key="platform_instagram">انستغرام</span>
+                    </a>
+                    <a href="https://www.facebook.com/moharamofficiall" target="_blank" class="social-card-new facebook">
+                        <i class="fab fa-facebook-f social-icon-new"></i>
+                        <span class="cairo-font" data-key="platform_facebook">فيسبوك</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@moharamofficiall" target="_blank" class="social-card-new tiktok">
+                        <i class="fab fa-tiktok social-icon-new"></i>
+                        <span class="cairo-font" data-key="platform_tiktok">تيك توك</span>
+                    </a>
+                </div>
+             </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <p data-key="footer_copyright">© 2025 | صُنع من قبل معجب</p>
+            <p data-key="footer_contact">للتواصل التجاري: Ahmadmuharam201@gmail.com</p>
+            <p data-key="footer_tagline">احمد محرم | يوتيوبر رحالة</p>
+			<p data-key="footer_bio">مصري | عايش في المانيا</p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            "ar": {
+                "page_title": "Ahmed Moharam - احمد محرم | رحّالة حول العالم",
+                "nav_about": "عني",
+                "nav_journey": "رحلتي",
+                "nav_digital_presence": "التواجد الرقمي",
+                "nav_contact": "التواصل",
+                "hero_subtitle": "أحمد محرم | يوتيوبر رحالة، صانع محتوى، فلوكر",
+                "hero_description": "نسافر لنستعيد الأمل الذي فقدناه، الأمل بالإنسان. نسافر لنكون أقرب من الشعوب، أقرب من الحقيقة، وأقرب لنا نحن. يأخذنا أحمد محرم في رحلة مميزة من خلال فلوجاته، حيث يستخدم الكوميديا ليوصل لنا الحقائق الإنسانية الجميلة والمواقف اليومية في أوروبا، ويرسم البسمة على وجوهنا ويقربنا من بعض. ❤️",
+                "hero_cta": "اكتشف رحلاتي",
+                "about_quote": "أنا أحمد محرم من مصر وأعيش في ألمانيا، أقدم فلوجات بطريقة كوميدية وأشارك حياتي اليومية.",
+                "about_p": "أسلوبي المميز في تقديم المحتوى الكوميدي جذب آلاف المهتمين بالحياة والدراسة في ألمانيا. قناتي ليست مجرد محتوى، بل هي دعوة للضحك والتعلم، تفتح في كل فيديو أفقاً جديداً من البهجة والمعرفة. وهدفي أن أسافر كل أوروبا 🇪🇺 وأنقل لكم أجمل اللحظات والمغامرات من كل البلدان!",
+                "stat1_label": "مشاهدة واكثر على اليوتيوب",
+                "stat2_label": "مشترك واكثر على اليوتيوب",
+                "stat3_label": "فيديو واكثر على اليوتيوب",
+                "stat4_label": "دولة واكثر زارها",
+                "timeline1_title": "بصمة رقمية مؤثرة",
+                "timeline1_desc": "تأثير واسع في أنحاء الوطن العربي بملايين المتابعين.",
+                "timeline2_title": "الهدف العالمي",
+                "timeline2_desc": "يسعى لتصوير فيديو من كل دولة في العالم، وقد أنجز الكثير من المهمة.",
+                "presence_title": "التواجد الرقمي",
+                "platform_youtube": "يوتيوب",
+                "platform_tiktok": "تيك توك",
+                "platform_instagram": "انستغرام",
+                "platform_facebook": "فيسبوك",
+                "total_followers_title": "الإجمالي على المنصات",
+                "join_community_cta": "انضم للمجتمع",
+                "social_title": "تابع المغامرة",
+                "footer_copyright": "© 2025 | صنع بواسطة معجب",
+                "footer_contact": "للتواصل التجاري: Ahmadmuharam201@gmail.com",
+                "footer_tagline": "احمد محرم | يوتيوبر رحالة",
+                "footer_bio": "مصري | يعيش في المانيا"
+            },
+            "en": {
+                "page_title": "Ahmed Moharam | World Traveler",
+                "nav_about": "About",
+                "nav_journey": "My Journey",
+                "nav_digital_presence": "Digital Presence",
+                "nav_contact": "Social",
+                "hero_subtitle": "Ahmed Moharam | Travel YouTuber, Content Creator, Vlogger",
+                "hero_description": "We travel to regain the hope we lost, hope in humanity. We travel to be closer to people, closer to the truth, and closer to ourselves. Ahmed Moharam takes us on a unique journey through his vlogs, using comedy to convey beautiful human truths and daily situations in Europe, bringing a smile to our faces and bringing us closer together. ❤️",
+                "hero_cta": "Discover My Journeys",
+                "about_quote": "I'm Ahmed Moharam from Egypt, living in Germany. I create comedic vlogs and share my daily life.",
+                "about_p": "My unique style of comedic content has attracted thousands interested in life and studying in Germany. My channel is not just content; it's an invitation to laugh and learn, opening new horizons of joy and knowledge in every video. My goal is to travel all over Europe 🇪🇺 and share the best moments and adventures from every country!",
+                "stat1_label": "Views & more on YouTube",
+                "stat2_label": "Subscribers & more on YouTube",
+                "stat3_label": "Videos & more on YouTube",
+                "stat4_label": "Countries & more visited",
+                "timeline1_title": "Influential Digital Footprint",
+                "timeline1_desc": "Wide impact across the Arab world with millions of followers.",
+                "timeline2_title": "The Global Goal",
+                "timeline2_desc": "Aims to film a video from every country in the world, having already completed a large part of the mission.",
+                "presence_title": "Digital Presence",
+                "platform_youtube": "YouTube",
+                "platform_tiktok": "TikTok",
+                "platform_instagram": "Instagram",
+                "platform_facebook": "Facebook",
+                "total_followers_title": "Total Across Platforms",
+                "join_community_cta": "Join the Community",
+                "social_title": "Follow the Adventure",
+                "footer_copyright": "© 2025 | Made by a fan",
+                "footer_contact": "For business inquiries: Ahmadmuharam201@gmail.com",
+                "footer_tagline": "Ahmed Moharam | Travel YouTuber",
+                "footer_bio": "Egyptian | Living in Germany"
+            },
+            "de": {
+                "page_title": "Ahmed Moharam | Weltreisender",
+                "nav_about": "Über mich",
+                "nav_journey": "Meine Reise",
+                "nav_digital_presence": "Digitale Präsenz",
+                "nav_contact": "Soziales",
+                "hero_subtitle": "Ahmed Moharam | Reise-YouTuber, Content Creator, Vlogger",
+                "hero_description": "Wir reisen, um die verlorene Hoffnung wiederzugewinnen, die Hoffnung in die Menschheit. Wir reisen, um den Menschen näher zu sein, der Wahrheit näher und uns selbst näher. Ahmed Moharam nimmt uns mit auf eine einzigartige Reise durch seine Vlogs, in denen er mit Komödie die schönen menschlichen Wahrheiten und alltäglichen Situationen in Europa vermittelt, uns ein Lächeln ins Gesicht zaubert und uns näher zusammenbringt. ❤️",
+                "hero_cta": "Entdecke meine Reisen",
+                "about_quote": "Ich bin Ahmed Moharam aus Ägypten und lebe in Deutschland. Ich erstelle komödiantische Vlogs und teile mein tägliches Leben.",
+                "about_p": "Mein einzigartiger Stil, komödiantische Inhalte zu präsentieren, hat Tausende angezogen, die sich für das Leben und Studieren in Deutschland interessieren. Mein Kanal ist nicht nur Inhalt; er ist eine Einladung zum Lachen und Lernen und eröffnet in jedem Video neue Horizonte der Freude und des Wissens. Mein Ziel ist es, ganz Europa 🇪🇺 zu bereisen und die besten Momente und Abenteuer aus jedem Land zu teilen!",
+                "stat1_label": "Aufrufe & mehr auf YouTube",
+                "stat2_label": "Abonnenten & mehr auf YouTube",
+                "stat3_label": "Videos & mehr auf YouTube",
+                "stat4_label": "Länder & mehr besucht",
+                "timeline1_title": "Einflussreicher digitaler Fußabdruck",
+                "timeline1_desc": "Weitreichender Einfluss in der arabischen Welt mit Millionen von Followern.",
+                "timeline2_title": "Das globale Ziel",
+                "timeline2_desc": "Ziel ist es, ein Video aus jedem Land der Welt zu filmen, wobei ein großer Teil der Mission bereits erfüllt ist.",
+                "presence_title": "Digitale Präsenz",
+                "platform_youtube": "YouTube",
+                "platform_tiktok": "TikTok",
+                "platform_instagram": "Instagram",
+                "platform_facebook": "Facebook",
+                "total_followers_title": "Gesamt auf allen Plattformen",
+                "join_community_cta": "Tritt der Community bei",
+                "social_title": "Folge dem Abenteuer",
+                "footer_copyright": "© 2025 | Von einem Fan gemacht",
+                "footer_contact": "Für geschäftliche Anfragen: Ahmadmuharam201@gmail.com",
+                "footer_tagline": "Ahmed Moharam | Reise-YouTuber",
+                "footer_bio": "Ägypter | Lebt in Deutschland"
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const languageSwitcher = document.querySelector('.language-dropdown');
+            const elementsToTranslate = document.querySelectorAll('[data-key]');
+            
+            const setLanguage = (lang) => {
+                elementsToTranslate.forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                
+                // Update body class for font styling
+                document.body.className = '';
+                document.body.classList.add(`lang-${lang}`);
+
+                const langText = lang === 'ar' ? 'العربية' : lang === 'en' ? 'English' : 'Deutsch';
+                document.getElementById('current-lang').innerText = langText;
+                
+                localStorage.setItem('language', lang);
+            };
+
+            languageSwitcher.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = e.target.getAttribute('lang');
+                if(lang) {
+                    setLanguage(lang);
+                }
+            });
+
+            // Load saved language or default to Arabic
+            const savedLang = localStorage.getItem('language') || 'ar';
+            setLanguage(savedLang);
+
+
+            // Counter Animation
+            const formatFinalNumber = (num) => {
+                if (num >= 1000000) {
+                    return (num / 1000000).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + 'M';
+                }
+                if (num >= 1000) {
+                    return (num / 1000).toLocaleString('en-US', { maximumFractionDigits: 0 }) + 'K';
+                }
+                return num.toLocaleString('en-US');
+            }
+
+            const animateCounter = (el) => {
+                const target = +el.getAttribute('data-target');
+                if (isNaN(target)) return;
+
+                const duration = 2000;
+                let startTime = null;
+
+                const animate = (timestamp) => {
+                    if (!startTime) startTime = timestamp;
+                    const progress = timestamp - startTime;
+                    const currentNum = Math.min(Math.floor((progress / duration) * target), target);
+                    
+                    if (el.classList.contains('stat-number')) {
+                        let formattedNum = currentNum.toLocaleString('en-US');
+                        if (target === 430000000) {
+                             el.innerText = (currentNum/1000000).toLocaleString('en-US', { maximumFractionDigits: 0 }) + "M";
+                        } else if (target === 825000) {
+                             el.innerText = (currentNum/1000).toLocaleString('en-US', { maximumFractionDigits: 0 }) + "K";
+                        } else {
+                            el.innerText = formattedNum;
+                        }
+                    } else {
+                        el.innerText = currentNum.toLocaleString('en-US');
+                    }
+
+                    if (progress < duration) {
+                        requestAnimationFrame(animate);
+                    } else {
+                         if (el.classList.contains('stat-number')) {
+                            if (target === 430000000) { el.innerText = "430M";}
+                            else if (target === 825000) { el.innerText = "825K"; }
+                            else { el.innerText = target.toLocaleString('en-US');}
+                         } else {
+                            el.innerText = formatFinalNumber(target);
+                         }
+                    }
+                };
+                
+                requestAnimationFrame(animate);
+            };
+            
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counters = entry.target.querySelectorAll('[data-target]');
+                        counters.forEach(counter => {
+                           animateCounter(counter);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            document.querySelectorAll('.journey-stats-section, .presence-container').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
